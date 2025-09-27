@@ -1,4 +1,5 @@
 import { clerkClient } from "@clerk/express";
+// import { message } from "../models/message.model.js";
 
 export const protectRoute = async (req, res, next) => {
     if (!req.auth.UserId){
@@ -8,7 +9,7 @@ export const protectRoute = async (req, res, next) => {
     next();
 };
 
-export const requiredAdmin = async(req, res, next) => {
+export const requireAdmin = async(req, res, next) => {
     try{
         const currentUser = await clerkClient.users.getUser(req.auth.UserId);
         const isAdmin = process.env.ADMIN_EMAIL === currentUser.primaryEmailAddress?.emailAddress;
@@ -17,6 +18,8 @@ export const requiredAdmin = async(req, res, next) => {
             return res.status(403).json({message: "Unauthorized - you must be logged in"});
         }
         next();
-    }catch (error){}
+    }catch (error){
+        next(error)
+    }
 
 };
