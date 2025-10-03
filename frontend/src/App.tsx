@@ -2,7 +2,17 @@
 import { Route, Routes } from 'react-router-dom';
 import HomePage from "./pages/home/HomePage";
 import AuthCallbackPage from './pages/auth-callback/AuthCallbackPage';
+import { axiosInstance } from './lib/axios';
 function App() {
+
+  const getSomeData = async() => {
+    const res = await axiosInstance.get("/users",{
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    console.log(res)
+  }
   return (
     <>
 <Routes>
