@@ -5,6 +5,6 @@ const AuthCallbackPage = () => {
       AuthCallbackPage
     </div>
   )
-}
+};
 
 export default AuthCallbackPage;
