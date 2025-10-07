@@ -1,10 +1,7 @@
 
 const AuthCallbackPage = () => {
-  return (
-    <div>
-      AuthCallbackPage
-    </div>
-  )
+  return <div>AuthCallbackPages</div>;
+
 };
 
 export default AuthCallbackPage;
